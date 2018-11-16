@@ -1,0 +1,60 @@
+{
+  "tasks": {
+    "task1": {
+      "task": "Walk the dogs",
+      "isCompleted": false
+    },
+    "task2": {
+      "task": "Water the plants",
+      "isCompleted": false
+    },
+    "task3": {
+      "task": "Meditate",
+      "isCompleted": false
+    },
+    "task4": {
+      "task": "Run",
+      "isCompleted": false
+    },
+    "task5": {
+      "task": "Poop",
+      "isCompleted": false
+    },
+    "task6": {
+      "task": "Wash dishes",
+      "isCompleted": false
+    },
+    "task7": {
+      "task": "Do NSS homework",
+      "isCompleted": false
+    },
+    "task8": {
+      "task": "Drink 100oz of water",
+      "isCompleted": false
+    },
+    "task9": {
+      "task": "Clean room",
+      "isCompleted": false
+    },
+    "task10": {
+      "task": "Fix the deck",
+      "isCompleted": false
+    },
+    "task11": {
+      "task": "Buy more scotch whisky",
+      "isCompleted": false
+    },
+    "task12": {
+      "task": "Write resume",
+      "isCompleted": false
+    },
+    "task13": {
+      "task": "Finish personal bio site",
+      "isCompleted": false
+    },
+    "task14": {
+      "task": "Finish sandwich maker",
+      "isCompleted": false
+    }
+  }
+}
