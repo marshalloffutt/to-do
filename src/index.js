@@ -1,10 +1,10 @@
 import 'bootstrap';
 import './index.scss';
-import $ from 'jquery';
+// import $ from 'jquery';
+import createNavbar from './components/navbar/navbar';
 
 const initializeApp = () => {
-  $('#content').html('hello');
-  console.log('Helllooooooo');
+  createNavbar();
 };
 
 initializeApp();
