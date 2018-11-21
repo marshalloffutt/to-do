@@ -6,7 +6,7 @@ const printTasks = (tasksArray) => {
   tasksArray.forEach((task) => {
     if (tasksArray.length) {
       taskString += `
-        <div data-id=${task.id} class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+        <div data-id=${task.id} class="card text-dark bg-light mb-3 m-2" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">${task.task}</h5>
             <button class="btn btn-danger">Delete</button>
