@@ -6,7 +6,7 @@ import apiKeys from '../db/apiKeys.json';
 import createNavbar from './components/navbar/navbar';
 import loginButton from './components/auth/auth';
 import checkLoginStatus from './helpers/authHelpers';
-import tasksPage from './components/tasksPage/tasksPage';
+import tasksStuff from './components/tasksPage/tasksPage';
 
 import './index.scss';
 
@@ -16,7 +16,8 @@ const initializeApp = () => {
   createNavbar();
   checkLoginStatus();
   loginButton();
-  tasksPage();
+  tasksStuff.tasksPage();
+  tasksStuff.bindEvents();
 };
 
 initializeApp();
