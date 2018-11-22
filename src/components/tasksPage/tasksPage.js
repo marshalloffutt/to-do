@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import getAllTasks from '../../helpers/data/tasksData';
+import tasksData from '../../helpers/data/tasksData';
 
 const printTasks = (tasksArray) => {
   let taskString = '';
@@ -9,9 +9,9 @@ const printTasks = (tasksArray) => {
         <div data-id=${task.id} class="card text-dark bg-light mb-3 m-2" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">${task.task}</h5>
-            <button class="btn btn-danger">Delete</button>
-            <button class="btn btn-warning">Edit</button>
-            <button class="btn btn-success">Done!</button>
+            <button class="btn btn-danger delete-btn" data-delete-id=${task.id}>Delete</button>
+            <button class="btn btn-warning edit-btn">Edit</button>
+            <button class="btn btn-success done-btn">Done!</button>
           </div>
         </div>
       `;
@@ -24,7 +24,7 @@ const printTasks = (tasksArray) => {
 };
 
 const tasksPage = () => {
-  getAllTasks()
+  tasksData.getAllTasks()
     .then((tasksArray) => {
       printTasks(tasksArray);
     })
@@ -33,4 +33,22 @@ const tasksPage = () => {
     });
 };
 
-export default tasksPage;
+const deleteTask = (e) => {
+  const idToDelete = e.target.dataset.deleteId;
+  tasksData.deleteTask(idToDelete)
+    .then(() => {
+      tasksPage();
+    })
+    .catch((error) => {
+      console.error('error in deleting task', error);
+    });
+};
+const bindEvents = () => {
+  $('body').on('click', '.delete-btn', deleteTask);
+};
+
+
+export default {
+  tasksPage,
+  bindEvents,
+};
