@@ -47,8 +47,9 @@ const bindEvents = () => {
   $('body').on('click', '.delete-btn', deleteTask);
 };
 
-
-export default {
-  tasksPage,
-  bindEvents,
+const initializeTasksPage = () => {
+  tasksPage();
+  bindEvents();
 };
+
+export default initializeTasksPage;
