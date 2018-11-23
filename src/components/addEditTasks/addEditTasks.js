@@ -6,7 +6,7 @@ const formBuilder = (task) => {
   const form = `
     <div class="form-group">
     <label for="form-task-name">Task:</label>
-    <input type="text" class="form-control" value="${task.name}" id="form-task-name" placeholder="Enter task">
+    <input type="text" class="form-control" value="${task.task}" id="form-task-name" placeholder="Enter task">
   </div>
   `;
   return form;
@@ -14,7 +14,7 @@ const formBuilder = (task) => {
 
 const gettingTaskFromForm = () => {
   const task = {
-    name: $('#form-task-name').val(),
+    task: $('#form-task-name').val(),
     isCompleted: false,
   };
   return task;
@@ -22,14 +22,13 @@ const gettingTaskFromForm = () => {
 
 const buildAddForm = () => {
   const emptyTask = {
-    name: '',
-    isCompleted: false,
+    task: '',
   };
   let domString = '<h2>Add New Task</h2>';
   domString += formBuilder(emptyTask);
-  domString += '<button id="add=task">Save New Task</button>';
+  domString += '<button id="add-task">Save New Task</button>';
   $('#add-edit-task').html(domString).show();
-  $('#tasks').hide();
+  $('#tasksPage').hide();
 };
 
 const addNewTask = () => {
@@ -37,7 +36,7 @@ const addNewTask = () => {
   tasksData.addNewTask(newTask)
     .then(() => {
       $('#add-edit-task').html('').hide();
-      $('#tasks').show();
+      $('#tasksPage').show();
       initializeTasksPage();
     })
     .catch((error) => {
