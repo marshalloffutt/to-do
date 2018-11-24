@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
-import tasksPageStuff from '../tasksPage/tasksPage';
+import initializeTasksPage from '../tasksPage/tasksPage';
 
 const formBuilder = (task) => {
   const form = `
@@ -37,7 +37,7 @@ const addNewTask = () => {
     .then(() => {
       $('#add-edit-task').html('').hide();
       $('#tasksPage').show();
-      tasksPageStuff.initializeTasksPage();
+      initializeTasksPage();
     })
     .catch((error) => {
       console.error('error', error);
@@ -51,7 +51,7 @@ const showEditForm = (e) => {
       let domString = '<h2>Edit Task</h2>';
       domString += formBuilder(singleTask);
       domString += `<button id="edit-task" data-single-edit-id=${singleTask.id}>Save Task</button>`;
-      $('#add-edit-task').htmlo(domString).show();
+      $('#add-edit-task').html(domString).show();
       $('#tasksPage').hide();
     })
     .catch((error) => {
@@ -66,7 +66,7 @@ const updateTask = (e) => {
     .then(() => {
       $('#add-edit-task').html('').hide();
       $('#tasksPage').show();
-      tasksPageStuff.initializeTasksPage();
+      initializeTasksPage();
     })
     .catch((error) => {
       console.error('error', error);
