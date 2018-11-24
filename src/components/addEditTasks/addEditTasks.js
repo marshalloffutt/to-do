@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
-import initializeTasksPage from '../tasksPage/tasksPage';
+import tasksPageStuff from '../tasksPage/tasksPage';
 
 const formBuilder = (task) => {
   const form = `
@@ -37,7 +37,36 @@ const addNewTask = () => {
     .then(() => {
       $('#add-edit-task').html('').hide();
       $('#tasksPage').show();
-      initializeTasksPage();
+      tasksPageStuff.initializeTasksPage();
+    })
+    .catch((error) => {
+      console.error('error', error);
+    });
+};
+
+const showEditForm = (e) => {
+  const idToEdit = e.target.dataset.editId;
+  tasksData.getSingleTask(idToEdit)
+    .then((singleTask) => {
+      let domString = '<h2>Edit Task</h2>';
+      domString += formBuilder(singleTask);
+      domString += `<button id="edit-task" data-single-edit-id=${singleTask.id}>Save Task</button>`;
+      $('#add-edit-task').htmlo(domString).show();
+      $('#tasksPage').hide();
+    })
+    .catch((error) => {
+      console.error('error in getting single for edit', error);
+    });
+};
+
+const updateTask = (e) => {
+  const updatedTask = gettingTaskFromForm();
+  const taskId = e.target.dataset.singleEditId;
+  tasksData.updateTask(updatedTask, taskId)
+    .then(() => {
+      $('#add-edit-task').html('').hide();
+      $('#tasksPage').show();
+      tasksPageStuff.initializeTasksPage();
     })
     .catch((error) => {
       console.error('error', error);
@@ -45,5 +74,7 @@ const addNewTask = () => {
 };
 
 $('body').on('click', '#add-task', addNewTask);
+$('body').on('click', '.edit-btn', showEditForm);
+$('body').on('click', '#edit-task', updateTask);
 
 export default buildAddForm;
