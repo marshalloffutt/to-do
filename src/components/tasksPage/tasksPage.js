@@ -1,6 +1,17 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
 
+const getSingleTask = (e) => {
+  const taskId = e.target.dataset.dataId;
+  tasksData.getSingleTask(taskId)
+    .then((singleTask) => {
+      console.log(singleTask);
+    })
+    .catch((error) => {
+      console.error('error in getting one task', error);
+    });
+};
+
 const printTasks = (tasksArray) => {
   let taskString = '';
   tasksArray.forEach((task) => {
@@ -10,7 +21,7 @@ const printTasks = (tasksArray) => {
           <div class="card-body">
             <h5 class="card-title">${task.task}</h5>
             <button class="btn btn-danger delete-btn" data-delete-id=${task.id}>Delete</button>
-            <button class="btn btn-warning edit-btn">Edit</button>
+            <button class="btn btn-warning edit-btn" data-edit-id=${task.id}>Edit</button>
             <button class="btn btn-success done-btn">Done!</button>
           </div>
         </div>
@@ -52,4 +63,7 @@ const initializeTasksPage = () => {
   bindEvents();
 };
 
-export default initializeTasksPage;
+export default {
+  initializeTasksPage,
+  getSingleTask,
+};

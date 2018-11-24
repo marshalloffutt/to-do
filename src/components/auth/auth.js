@@ -1,8 +1,9 @@
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import './auth.scss';
+
 import loginImage from './signin.png';
+import './auth.scss';
 
 const loginButton = () => {
   const domString = `
