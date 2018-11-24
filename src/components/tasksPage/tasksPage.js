@@ -1,16 +1,16 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
 
-const getSingleTask = (e) => {
-  const taskId = e.target.dataset.dataId;
-  tasksData.getSingleTask(taskId)
-    .then((singleTask) => {
-      console.log(singleTask);
-    })
-    .catch((error) => {
-      console.error('error in getting one task', error);
-    });
-};
+// const getSingleTask = (e) => {
+//   const taskId = e.target.dataset.dataId;
+//   tasksData.getSingleTask(taskId)
+//     .then((singleTask) => {
+//       console.log(singleTask);
+//     })
+//     .catch((error) => {
+//       console.error('error in getting one task', error);
+//     });
+// };
 
 const printTasks = (tasksArray) => {
   let taskString = '';
@@ -63,7 +63,4 @@ const initializeTasksPage = () => {
   bindEvents();
 };
 
-export default {
-  initializeTasksPage,
-  getSingleTask,
-};
+export default initializeTasksPage;
