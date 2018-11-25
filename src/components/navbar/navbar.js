@@ -8,25 +8,25 @@ const navbarEvents = () => {
     if (e.target.id === 'navbar-button-logout') {
       firebase.auth().signOut().then(() => {
         $('#auth').show();
-        $('#tasks').hide();
-        $('#done').hide();
+        $('#tasksPage').hide();
+        $('#donePage').hide();
       }).catch((err) => {
         console.error('you are still logged in', err);
       });
     } else if (e.target.id === 'navbar-button-tasks') {
       $('auth').hide();
-      $('#done').hide();
-      $('#tasks').show();
+      $('#donePage').hide();
+      $('#tasksPage').show();
       $('#logout').show();
     } else if (e.target.id === 'navbar-button-done') {
       $('auth').hide();
-      $('#tasks').hide();
-      $('#done').show();
+      $('#tasksPage').hide();
+      $('#donePage').show();
       $('#logout').show();
     } else {
       $('#auth').show();
-      $('#tasks').hide();
-      $('#done').hide();
+      $('#tasksPage').hide();
+      $('#donePage').hide();
     }
   });
 };

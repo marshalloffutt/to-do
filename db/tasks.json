@@ -2,7 +2,7 @@
   "tasks": {
     "task1": {
       "task": "Walk the dogs",
-      "isCompleted": false
+      "isCompleted": true
     },
     "task2": {
       "task": "Water the plants",

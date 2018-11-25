@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
 import initializeTasksPage from '../tasksPage/tasksPage';
+import initializeDonePage from '../donePage/donePage';
 
 const formBuilder = (task) => {
   const form = `
@@ -50,7 +51,7 @@ const showEditForm = (e) => {
     .then((singleTask) => {
       let domString = '<h2>Edit Task</h2>';
       domString += formBuilder(singleTask);
-      domString += `<button id="edit-task" data-single-edit-id=${singleTask.id}>Save Task</button>`;
+      domString += `<button class="btn btn-success" id="edit-task" data-single-edit-id=${singleTask.id}>Save Changes</button>`;
       $('#add-edit-task').html(domString).show();
       $('#tasksPage').hide();
     })
@@ -73,8 +74,28 @@ const updateTask = (e) => {
     });
 };
 
+const finishTask = (e) => {
+  const idToComplete = e.target.dataset.completeId;
+  tasksData.getSingleTask(idToComplete)
+    .then((singleTask) => {
+      const finishedTask = {
+        task: singleTask.task,
+        isCompleted: true,
+      };
+      tasksData.updateTask(finishedTask, idToComplete)
+        .then(() => {
+          initializeTasksPage();
+          initializeDonePage();
+        });
+    })
+    .catch((error) => {
+      console.error('error in finishing task', error);
+    });
+};
+
 $('body').on('click', '#add-task', addNewTask);
 $('body').on('click', '.edit-btn', showEditForm);
 $('body').on('click', '#edit-task', updateTask);
+$('body').on('click', '.done-btn', finishTask);
 
 export default buildAddForm;
