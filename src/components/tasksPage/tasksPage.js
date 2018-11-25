@@ -1,32 +1,23 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
 
-// const getSingleTask = (e) => {
-//   const taskId = e.target.dataset.dataId;
-//   tasksData.getSingleTask(taskId)
-//     .then((singleTask) => {
-//       console.log(singleTask);
-//     })
-//     .catch((error) => {
-//       console.error('error in getting one task', error);
-//     });
-// };
-
 const printTasks = (tasksArray) => {
   let taskString = '';
   tasksArray.forEach((task) => {
     if (tasksArray.length) {
-      taskString += `
-        <div id="${task.id}" data-id=${task.id} class="card text-dark bg-light mb-3 m-2" style="max-width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">${task.task}</h5>
-            <button class="btn btn-danger delete-btn" data-delete-id=${task.id}>Delete</button>
-            <button class="btn btn-warning edit-btn" data-edit-id=${task.id}>Edit</button>
-            <button class="btn btn-success done-btn">Done!</button>
+      if (task.isCompleted === false) {
+        taskString += `
+          <div id="${task.id}" data-id=${task.id} class="card text-dark bg-light mb-3 m-2" style="max-width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">${task.task}</h5>
+              <button class="btn btn-danger delete-btn" data-delete-id=${task.id}>Delete</button>
+              <button class="btn btn-warning edit-btn" data-edit-id=${task.id}>Edit</button>
+              <button class="btn btn-success done-btn" data-complete-id=${task.id}>Done!</button>
+            </div>
           </div>
-        </div>
-      `;
-      $('#tasks').html(taskString);
+        `;
+        $('#tasks').html(taskString);
+      }
     } else {
       taskString += '<p>You have no open tasks.</p>';
       $('#tasks').html(taskString);
@@ -54,6 +45,7 @@ const deleteTask = (e) => {
       console.error('error in deleting task', error);
     });
 };
+
 const bindEvents = () => {
   $('body').on('click', '.delete-btn', deleteTask);
 };
