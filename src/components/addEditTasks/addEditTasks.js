@@ -1,7 +1,5 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
-import initializeTasksPage from '../tasksPage/tasksPage';
-import initializeDonePage from '../donePage/donePage';
 
 const formBuilder = (task) => {
   const form = `
@@ -44,7 +42,7 @@ const addNewTask = () => {
   const newTask = gettingTaskFromInputField();
   tasksData.addNewTask(newTask)
     .then(() => {
-      initializeTasksPage();
+      // initializeTasksPage();
     })
     .catch((error) => {
       console.error('error', error);
@@ -73,7 +71,7 @@ const updateTask = (e) => {
     .then(() => {
       $('#add-edit-task').html('').hide();
       $('#tasksPage').show();
-      initializeTasksPage();
+      // initializeTasksPage();
     })
     .catch((error) => {
       console.error('error', error);
@@ -90,8 +88,7 @@ const finishTask = (e) => {
       };
       tasksData.updateTask(finishedTask, idToComplete)
         .then(() => {
-          initializeTasksPage();
-          initializeDonePage();
+          // initializeTasksPage();
         });
     })
     .catch((error) => {
@@ -103,11 +100,12 @@ $('body').on('keyup', '#inputField', (e) => {
   e.preventDefault();
   if (e.keyCode === 13) {
     addNewTask();
+    $('#inputField').val('');
   }
 });
 
 $('body').on('click', '.edit-btn', showEditForm);
 $('body').on('click', '#edit-task', updateTask);
-$('body').on('click', '#done', finishTask);
+$('body').on('click', '#finish-task', finishTask);
 
 export default buildAddForm;

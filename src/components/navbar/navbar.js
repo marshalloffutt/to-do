@@ -8,7 +8,7 @@ const navbarEvents = () => {
     if (e.target.id === 'navbar-button-logout') {
       firebase.auth().signOut().then(() => {
         $('#auth').show();
-        $('#tasks').hide();
+        $('#tasksPage').hide();
       }).catch((err) => {
         console.error('you are still logged in', err);
       });
@@ -31,9 +31,9 @@ const createNavbar = () => {
         <li class="nav-item">
           <a class="nav-link" id="navbar-button-auth">Authentication</a>
         </li>
-        <form class="form-inline my-2 my-lg-0">
+        <div class="form-inline my-2 my-lg-0">
           <input id="inputField" class="form-control mr-sm-2" type="addTask" placeholder="Add New Task" aria-label="AddTask">
-        </form>
+        </div>
         <li class="nav-item">
         <a class="nav-link" id="navbar-button-logout">Logout</a>
         </li>
