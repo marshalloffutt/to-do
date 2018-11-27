@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
+import './donePage.scss';
 
 const printCompletedTasks = (tasksArray) => {
   let taskString = '';
@@ -9,7 +10,7 @@ const printCompletedTasks = (tasksArray) => {
         taskString += `
         <div id="${task.id}" data-id=${task.id} class="card text-dark bg-light mb-3 m-2" style="max-width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">${task.task}</h5>
+          <h5 class="card-title donezo">${task.task}</h5>
         </div>
       </div>
         `;

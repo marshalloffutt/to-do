@@ -21,6 +21,14 @@ const gettingTaskFromForm = () => {
   return task;
 };
 
+const gettingTaskFromInputField = () => {
+  const task = {
+    task: $('#inputField').val(),
+    isCompleted: false,
+  };
+  return task;
+};
+
 const buildAddForm = () => {
   const emptyTask = {
     task: '',
@@ -33,11 +41,9 @@ const buildAddForm = () => {
 };
 
 const addNewTask = () => {
-  const newTask = gettingTaskFromForm();
+  const newTask = gettingTaskFromInputField();
   tasksData.addNewTask(newTask)
     .then(() => {
-      $('#add-edit-task').html('').hide();
-      $('#tasksPage').show();
       initializeTasksPage();
     })
     .catch((error) => {
@@ -93,9 +99,15 @@ const finishTask = (e) => {
     });
 };
 
-$('body').on('click', '#add-task', addNewTask);
+$('body').on('keyup', '#inputField', (e) => {
+  e.preventDefault();
+  if (e.keyCode === 13) {
+    addNewTask();
+  }
+});
+
 $('body').on('click', '.edit-btn', showEditForm);
 $('body').on('click', '#edit-task', updateTask);
-$('body').on('click', '.done-btn', finishTask);
+$('body').on('click', '#done', finishTask);
 
 export default buildAddForm;

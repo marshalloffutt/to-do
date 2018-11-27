@@ -7,14 +7,17 @@ const printTasks = (tasksArray) => {
     if (tasksArray.length) {
       if (task.isCompleted === false) {
         taskString += `
-          <div id="${task.id}" data-id=${task.id} class="card text-dark bg-light mb-3 m-2" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">${task.task}</h5>
-              <button class="btn btn-danger delete-btn" data-delete-id=${task.id}>Delete</button>
-              <button class="btn btn-warning edit-btn" data-edit-id=${task.id}>Edit</button>
-              <button class="btn btn-success done-btn" data-complete-id=${task.id}>Done!</button>
-            </div>
-          </div>
+        <div id="${task.id}" data-id=${task.id} class="card text-dark bg-light mb-3 m-2" style="max-width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">${task.task}</h5>
+          <input class="form-check-input" type="checkbox" value="${task.id}" id="done" data-complete-id=${task.id}>
+          <label class="form-check-label" for="done">
+              Done
+          </label>
+          <button class="btn btn-danger delete-btn" data-delete-id=${task.id}><i class="fa fa-trash"></i></button>
+          <button class="btn btn-warning edit-btn" data-edit-id=${task.id}><i class="far fa-edit"></i></button>
+        </div>
+      </div>
         `;
         $('#tasks').html(taskString);
       }
