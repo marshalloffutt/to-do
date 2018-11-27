@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
 import initializeTasksPage from '../tasksPage/tasksPage';
-import initializeDonePage from '../donePage/donePage';
 
 const formBuilder = (task) => {
   const form = `
@@ -21,6 +20,14 @@ const gettingTaskFromForm = () => {
   return task;
 };
 
+const gettingTaskFromInputField = () => {
+  const task = {
+    task: $('#inputField').val(),
+    isCompleted: false,
+  };
+  return task;
+};
+
 const buildAddForm = () => {
   const emptyTask = {
     task: '',
@@ -33,11 +40,9 @@ const buildAddForm = () => {
 };
 
 const addNewTask = () => {
-  const newTask = gettingTaskFromForm();
+  const newTask = gettingTaskFromInputField();
   tasksData.addNewTask(newTask)
     .then(() => {
-      $('#add-edit-task').html('').hide();
-      $('#tasksPage').show();
       initializeTasksPage();
     })
     .catch((error) => {
@@ -85,7 +90,6 @@ const finishTask = (e) => {
       tasksData.updateTask(finishedTask, idToComplete)
         .then(() => {
           initializeTasksPage();
-          initializeDonePage();
         });
     })
     .catch((error) => {
@@ -93,9 +97,16 @@ const finishTask = (e) => {
     });
 };
 
-$('body').on('click', '#add-task', addNewTask);
+$('body').on('keyup', '#inputField', (e) => {
+  e.preventDefault();
+  if (e.keyCode === 13) {
+    addNewTask();
+    $('#inputField').val('');
+  }
+});
+
 $('body').on('click', '.edit-btn', showEditForm);
 $('body').on('click', '#edit-task', updateTask);
-$('body').on('click', '.done-btn', finishTask);
+$('body').on('click', '#finish-task', finishTask);
 
 export default buildAddForm;
