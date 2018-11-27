@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
+import initializeTasksPage from '../tasksPage/tasksPage';
 
 const formBuilder = (task) => {
   const form = `
@@ -42,7 +43,7 @@ const addNewTask = () => {
   const newTask = gettingTaskFromInputField();
   tasksData.addNewTask(newTask)
     .then(() => {
-      // initializeTasksPage();
+      initializeTasksPage();
     })
     .catch((error) => {
       console.error('error', error);
@@ -71,7 +72,7 @@ const updateTask = (e) => {
     .then(() => {
       $('#add-edit-task').html('').hide();
       $('#tasksPage').show();
-      // initializeTasksPage();
+      initializeTasksPage();
     })
     .catch((error) => {
       console.error('error', error);
@@ -88,7 +89,7 @@ const finishTask = (e) => {
       };
       tasksData.updateTask(finishedTask, idToComplete)
         .then(() => {
-          // initializeTasksPage();
+          initializeTasksPage();
         });
     })
     .catch((error) => {
