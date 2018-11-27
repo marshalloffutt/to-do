@@ -14,8 +14,8 @@ const printTasks = (tasksArray) => {
           <label class="form-check-label" for="finish-task">
               Done
           </label>
-          <button class="btn btn-danger delete-btn" data-delete-id=${task.id}><i class="fa fa-trash"></i></button>
-          <button class="btn btn-warning edit-btn" data-edit-id=${task.id}><i class="far fa-edit"></i></button>
+          <button class="btn btn-danger delete-btn" data-delete-id=${task.id}><i class="fa fa-trash" data-delete-id=${task.id}></i></button>
+          <button class="btn btn-warning edit-btn" data-edit-id=${task.id}><i class="far fa-edit" data-edit-id=${task.id}></i></button>
         </div>
       </div>
         `;
