@@ -21,7 +21,7 @@ const navbarEvents = () => {
 
 const createNavbar = () => {
   const domString = `
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav id="nav" class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="#">GTD</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
