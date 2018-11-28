@@ -12,12 +12,12 @@ const formBuilder = (task) => {
   return form;
 };
 
-const gettingTaskFromForm = () => {
-  const task = {
-    task: $('#form-task-name').val(),
+const gettingTaskFromEdit = (task) => {
+  const editedTask = {
+    task,
     isCompleted: false,
   };
-  return task;
+  return editedTask;
 };
 
 const gettingTaskFromInputField = () => {
@@ -50,33 +50,16 @@ const addNewTask = () => {
     });
 };
 
-const showEditForm = (e) => {
+const editTaskField = (e) => {
   const idToEdit = e.target.dataset.editId;
-  tasksData.getSingleTask(idToEdit)
-    .then((singleTask) => {
-      let domString = '<h2>Edit Task</h2>';
-      domString += formBuilder(singleTask);
-      domString += `<button class="btn btn-success" id="edit-task" data-single-edit-id=${singleTask.id}>Save Changes</button>`;
-      $('#add-edit-task').html(domString).show();
-      $('#tasksPage').hide();
-    })
-    .catch((error) => {
-      console.error('error in getting single for edit', error);
-    });
+  const stuff = $(e.target).closest('.test').siblings('.card-title')[0];
+  const divHtml = $(e.target).closest('.test').siblings('.card-title')[0].innerText;
+  const editableText = `<input type="text" data-input-id="${idToEdit}"class="input" value="${divHtml}"/>`;
+  $(stuff).replaceWith(editableText);
 };
 
-const updateTask = (e) => {
-  const updatedTask = gettingTaskFromForm();
-  const taskId = e.target.dataset.singleEditId;
-  tasksData.updateTask(updatedTask, taskId)
-    .then(() => {
-      $('#add-edit-task').html('').hide();
-      $('#tasksPage').show();
-      initializeTasksPage();
-    })
-    .catch((error) => {
-      console.error('error', error);
-    });
+const updateTask = (taskId) => {
+  console.log(taskId);
 };
 
 const finishTask = (e) => {
@@ -105,7 +88,18 @@ $('body').on('keyup', '#inputField', (e) => {
   }
 });
 
-$('body').on('click', '.edit-btn', showEditForm);
+$('body').on('keyup', '.input', (e) => {
+  if (e.keyCode === 13) {
+    const editedText = e.target.value;
+    const editId = e.target.dataset.inputId;
+    tasksData.updateTask(gettingTaskFromEdit(editedText), editId)
+      .then(() => {
+        initializeTasksPage();
+      });
+  }
+});
+
+$('body').on('click', '.edit-btn', editTaskField);
 $('body').on('click', '#edit-task', updateTask);
 $('body').on('click', '#finish-task', finishTask);
 
