@@ -7,10 +7,10 @@ const printTasks = (tasksArray) => {
   tasksArray.forEach((task) => {
     if (task.isCompleted === false) {
       taskString += `
-        <div id="${task.id}" data-id=${task.id} class="card text-dark bg-light mb-3 m-2" style="max-width: 18rem;">
+        <div id="${task.id}" data-id=${task.id} class="card text-dark bg-light mb-3 m-2" style="width: 16rem;">
           <div class="card-body">
-            <div class="card-title" id="${task.task}">${task.task}</div>
-            <div class="test">
+            <div class="card-title task-name" id="${task.task}">${task.task}</div>
+            <div class="test container">
               <input class="form-check-input" type="checkbox" value="${task.id}" id="finish-task" data-complete-id=${task.id}>
               <label class="form-check-label" for="finish-task">
                   Done
