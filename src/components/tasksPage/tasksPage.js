@@ -30,7 +30,7 @@ const printFinishedTasks = (tasksArray) => {
   tasksArray.forEach((task) => {
     if (task.isCompleted === true) {
       taskString += `
-          <div id="${task.id}" data-id=${task.id} class="card text-dark bg-light mb-3 m-2 mt-4" style="width: 16rem;">
+          <div id="${task.id}" data-id=${task.id} class="card text-dark bg-light mb-3 m-2 mt-2" style="width: 16rem;">
             <div class="card-body">
               <h5 class="card-title donezo">${task.task}</h5>
             </div>
