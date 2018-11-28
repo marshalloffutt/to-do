@@ -25,11 +25,11 @@
       "isCompleted": false
     },
     "task7": {
-      "task": "Do NSS homework",
+      "task": "Finish homework",
       "isCompleted": false
     },
     "task8": {
-      "task": "Drink 100oz of water",
+      "task": "Drink water",
       "isCompleted": false
     },
     "task9": {
@@ -41,7 +41,7 @@
       "isCompleted": false
     },
     "task11": {
-      "task": "Buy more scotch whisky",
+      "task": "Buy scotch",
       "isCompleted": false
     },
     "task12": {
@@ -49,11 +49,7 @@
       "isCompleted": false
     },
     "task13": {
-      "task": "Finish personal bio site",
-      "isCompleted": false
-    },
-    "task14": {
-      "task": "Finish sandwich maker",
+      "task": "Finish bio site",
       "isCompleted": false
     }
   }
