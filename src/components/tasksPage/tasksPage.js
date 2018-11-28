@@ -8,15 +8,17 @@ const printTasks = (tasksArray) => {
     if (task.isCompleted === false) {
       taskString += `
         <div id="${task.id}" data-id=${task.id} class="card text-dark bg-light mb-3 m-2" style="max-width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">${task.task}</h5>
-          <input class="form-check-input" type="checkbox" value="${task.id}" id="finish-task" data-complete-id=${task.id}>
-          <label class="form-check-label" for="finish-task">
-              Done
-          </label>
-          <button class="btn btn-danger delete-btn" data-delete-id=${task.id}><i class="fa fa-trash" data-delete-id=${task.id}></i></button>
-          <button class="btn btn-warning edit-btn" data-edit-id=${task.id}><i class="far fa-edit" data-edit-id=${task.id}></i></button>
-        </div>
+          <div class="card-body">
+            <div class="card-title" id="${task.task}">${task.task}</div>
+            <div class="test">
+              <input class="form-check-input" type="checkbox" value="${task.id}" id="finish-task" data-complete-id=${task.id}>
+              <label class="form-check-label" for="finish-task">
+                  Done
+              </label>
+              <button class="btn btn-danger delete-btn" data-delete-id=${task.id}><i class="fa fa-trash" data-delete-id=${task.id}></i></button>
+              <button class="btn btn-warning edit-btn" data-edit-id=${task.id}><i class="far fa-edit" data-edit-id=${task.id}></i></button>
+            </div>
+          </div>
       </div>
         `;
       $('#tasks').html(taskString);
