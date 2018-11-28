@@ -19,7 +19,7 @@ This is a basic to-do app, where a user can log in with Google authentication, a
 Note: To run this app you will need a firebase account and a new project.
 
 ### 1. Configure Firebase
-1. Close the repository to a local machine.
+1. Clone the repository to a local machine.
 2. Run the following command in terminal to download the web dependencies: `npm install`
 3. In the db folder, rename apiKeys.json.example to apiKeys.json.
 4. In Firebase, create a new project.
