@@ -2,7 +2,6 @@
 
 ## Description
 This is a basic to-do app. On load, the user can log in with Google authentication, and then create, edit, and delete tasks. Once a task is complete, the user can click the checkbox next to the task name, the task will then be moved to the Completed Tasks area further down the page. This app makes full use of CRUD axios methods with Firebase.
-The current website can be viewed [here](https://to-do-3110d.firebaseapp.com/).
 
 ![mainview](./screenshots/snapshot1.png)
 ![editview](./screenshots/snapshot2.png)
